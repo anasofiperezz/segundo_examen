@@ -8,7 +8,8 @@ services:
     environment:
       - FLASK_APP=app.py
       - FLASK_ENV=development
-      - DATABASE_URL=postgres://examen2_sistemas_user:uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz@dpg-co6t61mv3ddc73c8ob30-a/examen2_sistemas
+      # Asegúrate de usar la URI correcta aquí
+      - DATABASE_URL=postgresql://examen2_sistemas_user:uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz@dpg-co6t61mv3ddc73c8ob30-a/examen2_sistemas
     depends_on:
       - db
 
@@ -19,15 +20,9 @@ services:
       - POSTGRES_USER=examen2_sistemas_user
       - POSTGRES_PASSWORD=uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz
 
-  frontend:
-    build:
-      context: ./frontend
-    ports:
-      - "80:80"
-
-  extra:
-    build:
-      context: ./extra
-    ports:
-      - "8080:8080"
-
+# Temporalmente comentado para enfocarnos en app.py
+#  extra:
+#    build:
+#      context: ./extra
+#    ports:
+#      - "8080:8080"
