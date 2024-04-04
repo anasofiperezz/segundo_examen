@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - DATABASE_URL=postgres://examen2_sistemas_user:uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz@dpg-co6t61mv3ddc73c8ob30-a/examen2_sistemas
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=examen2_sistemas
+      - POSTGRES_USER=examen2_sistemas_user
+      - POSTGRES_PASSWORD=uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+
+  extra:
+    build:
+      context: ./extra
+    ports:
+      - "8080:8080"
+
