@@ -1,8 +1,12 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+
+# Después de inicializar tu app Flask
+
 
 app = Flask(__name__)
-
+CORS(app)
 # Especifica la URI de la base de datos PostgreSQL con el formato adecuado.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://examen2_sistemas_user:uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz@dpg-co6t61mv3ddc73c8ob30-a/examen2_sistemas'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
