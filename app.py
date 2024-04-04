@@ -46,6 +46,16 @@ def actualizar_estado_paquete(id):
         return jsonify({'mensaje': 'Estado actualizado'})
     else:
         return jsonify({'mensaje': 'Paquete no encontrado'}), 404
+    
+@app.route('/')
+def index():
+    return "Bienvenido a la API de seguimiento de paquetes."
+
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204  # No Content
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
