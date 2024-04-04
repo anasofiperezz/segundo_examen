@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+# Especifica la URI de la base de datos PostgreSQL con el formato adecuado.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://examen2_sistemas_user:uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz@dpg-co6t61mv3ddc73c8ob30-a/examen2_sistemas'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -11,7 +12,7 @@ class Paquete(db.Model):
     id = db.Column(db.String, primary_key=True)
     estado = db.Column(db.String, nullable=False)
 
-    def _repr_(self):
+    def __repr__(self):
         return f'<Paquete {self.id} {self.estado}>'
 
 @app.route('/paquetes', methods=['GET'])
@@ -47,6 +48,4 @@ def actualizar_estado_paquete(id):
         return jsonify({'mensaje': 'Paquete no encontrado'}), 404
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
