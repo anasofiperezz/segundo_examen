@@ -7,7 +7,7 @@ services:
       - "5000:5000"
     environment:
       - FLASK_APP=app.py
-      - FLASK_ENV=development
+      - FLASK_DEBUG=1
       # Asegúrate de usar la URI correcta aquí
       - DATABASE_URL=postgresql://examen2_sistemas_user:uAQZagzeNJiSA9GHxx8dvTn1f2E9FSxz@dpg-co6t61mv3ddc73c8ob30-a/examen2_sistemas
     depends_on:
